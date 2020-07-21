@@ -1,6 +1,13 @@
 const express = require('express');
+const connectDB = require('./config/db');
 
 const app = express();
+
+//MIDDLEWARE
+app.use(express.json({ extended: false }));
+
+//CONNECT DATABASE
+connectDB();
 
 //DEFINE ROUTES
 app.use('/api/users', require('./routes/users'));
