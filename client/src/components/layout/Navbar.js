@@ -2,14 +2,20 @@ import React, { useContext, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
+import ContactContext from '../../context/contact/contactContext';
 import AuthContext from '../../context/auth/authContext';
 
 const Navbar = (props) => {
   const authContext = useContext(AuthContext);
+  const contactContext = useContext(ContactContext);
+
   const { user, logout, isAuthenticated } = authContext;
+
+  const { clearContacts } = contactContext;
 
   const onLogout = () => {
     logout();
+    clearContacts();
   };
 
   const authLinks = (
